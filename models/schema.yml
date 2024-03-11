@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw_data  # This should match the actual schema name in your database
+    tables:
+      - name: orders
+      - name: order_items
+      - name: users
+      - name: products
+      - name: organic_search_performance
+      - name: google_ads_campaigns
+    
