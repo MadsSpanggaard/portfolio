@@ -24,7 +24,7 @@ SELECT
     d.week_of_year,
     d.is_weekday,
     COALESCE(o.total_amount::DECIMAL(10,2), 0) as total_amount,
-    COALESCE(o.n_orders, 0) as n_orders
+    COALESCE(o.n_orders, 0) as n_orders,
     LAG(o.total_amount::DECIMAL(10,2), 1) over (order by d.month) as previous_month_amount,
     LAG(o.n_orders, 1) over (order by d.month) as previous_month_orders
 FROM 
