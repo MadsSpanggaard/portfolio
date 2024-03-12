@@ -1,4 +1,5 @@
--- Generate a Date Dimension table
+{{ config(materialized='table') }} 
+
 WITH date_series AS (
     SELECT generate_series(
         DATE_TRUNC('day', CURRENT_DATE) - INTERVAL '2 years',
