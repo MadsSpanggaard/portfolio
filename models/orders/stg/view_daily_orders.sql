@@ -19,6 +19,7 @@ SELECT
     COALESCE(o.total_amount, 0)::DECIMAL(10,2) AS total_amount,
     COALESCE(o.n_orders, 0) AS n_orders,
     COALESCE(p.total_amount, 0)::DECIMAL(10,2) AS previous_month_amount,
+    SUM(COALESCE(p.total_amount, 0)::DECIMAL(10,2)) OVER(PARTITION BY d.date) running_previous_month_amount,
     COALESCE(p.n_orders, 0) AS previous_month_orders
 FROM 
     {{ ref('date') }} d
