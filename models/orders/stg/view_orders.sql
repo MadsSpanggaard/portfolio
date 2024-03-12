@@ -14,6 +14,10 @@ SELECT
     o.id,
     o.user_id,
     o.order_date,
+    SPLIT_PART(o.shipping_address, ', ', 1) AS address,
+    SPLIT_PART(o.shipping_address, ', ', 2) AS city,
+    SPLIT_PART(o.shipping_address, ', ', 3) AS zip,
+    SPLIT_PART(o.shipping_address, ', ', 4) AS country,
     o.shipping_address,
     oi.total_amount
 FROM {{ref("raw_orders")}} o 

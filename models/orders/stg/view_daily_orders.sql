@@ -19,6 +19,10 @@ min_max_orders AS (
 
 SELECT 
     d.date as order_date,
+    d.year,
+    d.month,
+    d.week_of_year,
+    d.is_weekday,
     COALESCE(o.total_amount::DECIMAL(10,2), 0) as total_amount,
     COALESCE(o.n_orders, 0) as n_orders
 FROM 
