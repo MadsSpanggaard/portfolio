@@ -21,7 +21,6 @@ SELECT
 FROM 
     {{ ref('date') }} d
 LEFT JOIN orders o ON d.date = o.order_date
-LEFT JOIN orders p ON (d.date - INTERVAL '1 month') = p.order_date
 WHERE 
     d.date BETWEEN (SELECT MIN(order_date) FROM orders) AND (SELECT MAX(order_date) FROM orders)
 ORDER BY 
