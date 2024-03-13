@@ -17,7 +17,10 @@ SELECT
     EXTRACT(week FROM d.date) AS week_of_year,
     is_weekday,
     COALESCE(o.total_amount, 0)::DECIMAL(10,2) AS total_amount,
-    COALESCE(o.n_orders, 0) AS n_orders
+    COALESCE(o.n_orders, 0) AS n_orders,
+    SUM(o.total_amount) OVER(ORDER BY d.date asc) as running_total_amount, 
+    SUM(o.n_orders) OVER(ORDER BY d.date asc) as running_n_orders 
+    
 FROM 
     {{ ref('date') }} d
 LEFT JOIN orders o ON d.date = o.order_date

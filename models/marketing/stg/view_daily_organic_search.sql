@@ -20,9 +20,7 @@ WITH base AS (
     LAG(osp.clicks, 1) OVER(PARTITION BY osp.product_id ORDER BY osp.date) AS previous_day_clicks,
     LAG(osp.impressions, 1) OVER(PARTITION BY osp.product_id ORDER BY osp.date) AS previous_day_impressions,
     osp.clicks - LAG(osp.clicks, 1) OVER(PARTITION BY osp.product_id ORDER BY osp.date) AS day_to_day_click_difference,
-    osp.impressions - LAG(osp.impressions, 1) OVER(PARTITION BY osp.product_id ORDER BY osp.date) AS day_to_day_impression_difference,
-    LAG(osp.clicks, 1) OVER(PARTITION BY osp.product_id ORDER BY (osp.date - INTERVAL '1 month')) AS previous_month_clicks,
-    LAG(osp.impressions, 1) OVER(PARTITION BY osp.product_id ORDER BY (osp.date - INTERVAL '1 month')) AS previous_month_impressions
+    osp.impressions - LAG(osp.impressions, 1) OVER(PARTITION BY osp.product_id ORDER BY osp.date) AS day_to_day_impression_difference
   FROM
     {{ref('raw_organic_search_performance')}} osp
   LEFT JOIN
