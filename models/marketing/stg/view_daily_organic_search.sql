@@ -27,21 +27,9 @@ WITH base AS (
     {{ref('raw_organic_search_performance')}} osp
   LEFT JOIN
     {{ref('date')}} dd ON osp.date = dd.date
-),
-
-day_of_week_analysis AS (
-  SELECT
-    day_of_week,
-    AVG(clicks) AS avg_clicks_per_day,
-    AVG(impressions) AS avg_impressions_per_day
-  FROM base
-  GROUP BY day_of_week
 )
 
 SELECT
-  b.*,
-  d.avg_clicks_per_day,
-  d.avg_impressions_per_day
+  b.*
 FROM base b
-LEFT JOIN day_of_week_analysis d ON b.day_of_week = d.day_of_week
 ORDER BY b.product_id, b.date

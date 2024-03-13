@@ -33,23 +33,10 @@ WITH base AS (
     total_spend - LAG(total_spend, 1) OVER(PARTITION BY campaign_id, product_id ORDER BY date)::DECIMAL(10,2) AS day_to_day_spend_difference
   FROM
     {{ref('raw_google_ads_campaigns')}}
-),
-
-day_of_week_analysis AS (
-  SELECT
-    day_of_week,
-    AVG(clicks) AS avg_clicks_per_day,
-    AVG(impressions) AS avg_impressions_per_day,
-    AVG(total_spend) AS avg_spend_per_day
-  FROM base
-  GROUP BY 1
 )
 
+
 SELECT
-  b.*,
-  d.avg_clicks_per_day,
-  d.avg_impressions_per_day,
-  d.avg_spend_per_day
+  b.*
 FROM base b
-LEFT JOIN day_of_week_analysis d ON b.day_of_week = d.day_of_week
 ORDER BY campaign_id, product_id, date
