@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: date
+    description: "Generates a date dimension table that spans from two years before the current date to the present day. It includes detailed breakdowns for each date, such as year, month, day, day of the year, week of the year, ISO day of the week, quarter, day name, month name, and a boolean indicating weekdays. This table is invaluable for time-based analyses, enabling easy filtering, grouping, and trend analysis across a wide range of time granularities."
+    columns:
+      - name: date
+        description: "The date, serving as the primary dimension for time-based analyses."
+      - name: year
+        description: "The year extracted from the date."
+      - name: month
+        description: "The month extracted from the date, as a numeric value."
+      - name: day
+        description: "The day of the month."
+      - name: day_of_year
+        description: "The day of the year, ranging from 1 to 365 (or 366 in leap years)."
+      - name: week_of_year
+        description: "The ISO week number of the year."
+      - name: day_of_week_iso
+        description: "The ISO day of the week, with 1 representing Monday and 7 representing Sunday."
+      - name: quarter
+        description: "The quarter of the year, ranging from 1 to 4."
+      - name: day_name
+        description: "The full name of the day (e.g., 'Monday', 'Tuesday')."
+      - name: month_name
+        description: "The full name of the month (e.g., 'January', 'February')."
+      - name: is_weekday
+        description: "A boolean indicating whether the date falls on a weekday (Monday to Friday). True for weekdays, False for weekends."

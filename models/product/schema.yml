@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: raw_products
+    description: "A table that structures raw product data, making it more accessible and analyzable. It includes essential product details such as the product ID, product name, category, price, and quantity in stock. This model is vital for analyses involving product information, inventory management, and pricing strategies."
+    columns:
+      - name: product_id
+        description: "The unique identifier for the product."
+      - name: product_name
+        description: "The name of the product."
+      - name: category
+        description: "The category to which the product belongs, helping in classification and grouping."
+      - name: price
+        description: "The price of the product, reflecting its current selling price."
+      - name: qty_in_stock
+        description: "The quantity of the product currently available in stock, useful for inventory management and demand planning."

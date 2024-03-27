@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: raw_users
+    description: "A table that reformats raw user data into a more query-friendly structure. It includes user identification and contact information, along with the signup date and address. Essential for user-centric analyses, this model supports segmentation, behavioral analysis, and communication efforts."
+    columns:
+      - name: id
+        description: "The unique identifier for the user, corresponding to the user's ID in the source system."
+      - name: first_name
+        description: "The user's first name, useful for personalized communications and reporting."
+      - name: last_name
+        description: "The user's last name, aiding in identification and personalization."
+      - name: email
+        description: "The user's email address, serving as a primary contact point and unique identifier in digital communications."
+      - name: signup_date
+        description: "The date the user signed up, critical for tracking user acquisition over time and analyzing user lifecycle."
+      - name: address
+        description: "The user's physical address, enabling geographical segmentation, shipping calculations, and market analysis."

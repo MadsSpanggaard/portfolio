@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: raw_order_items
+    description: "A table derived from raw order item data. It includes essential details of each order item, such as the unique identifier, order ID, product ID, quantity ordered, and the price per unit. This model serves as a foundational layer for analyzing order item-level data."
+    columns:
+      - name: id
+        description: "The unique identifier for each order item."
+      - name: order_id
+        description: "The identifier linking the order item to its parent order."
+      - name: product_id
+        description: "The identifier for the product ordered."
+      - name: qty
+        description: "The quantity of the product ordered."
+      - name: price_per_unit
+        description: "The price of the product per unit at the time of the order."
+
+  - name: raw_orders
+    description: "A table that organizes raw order data into a structured format. It captures key information about each order, including the order ID, user ID of the customer, order date, shipping address, and the total amount of the order. This model is crucial for order-level analysis and reporting."
+    columns:
+      - name: id
+        description: "The unique identifier for the order."
+      - name: user_id
+        description: "The identifier of the user who placed the order."
+      - name: order_date
+        description: "The date when the order was placed."
+      - name: shipping_address
+        description: "The shipping address where the order is to be delivered."
+      - name: total_amount
+        description: "The total amount of the order."
