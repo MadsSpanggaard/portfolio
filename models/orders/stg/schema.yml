@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: view_daily_orders
+    description: "An aggregated view of orders by date, summarizing total amount and the number of orders. It includes additional date granularity such as year, month, and week of the year, and indicates whether the day is a weekday."
+    columns:
+      - name: order_date
+        description: "The date of the orders."
+      - name: year
+        description: "The year extracted from the order date."
+      - name: month
+        description: "The month extracted from the order date."
+      - name: week_of_year
+        description: "The week of the year extracted from the order date."
+      - name: is_weekday
+        description: "Indicates whether the order date falls on a weekday."
+      - name: total_amount
+        description: "The total amount for orders on the given date, formatted as a decimal."
+      - name: n_orders
+        description: "The number of orders placed on the given date."
+
+  - name: view_orders
+    description: "A detailed view of orders, combining order items into a single record per order, including the total amount of the order, product details, and shipping information."
+    columns:
+      - name: id
+        description: "A unique identifier for each order-product combination."
+      - name: order_id
+        description: "The unique identifier for the order."
+      - name: user_id
+        description: "The identifier for the user who placed the order."
+      - name: product_id
+        description: "The identifier for the product ordered."
+      - name: order_date
+        description: "The date the order was placed."
+      - name: address
+        description: "The shipping address for the order, extracted from the full shipping address details."
+      - name: total_amount
+        description: "The total amount for the order, calculated as the quantity multiplied by the price per unit for each product in the order."

@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: view_daily_ads_and_organic
+    description: "A view that aggregates Google Ads and organic search data by campaign, product, and date, providing a unified view of ad and organic performance metrics such as impressions, clicks, and CTR."
+    columns:
+      - name: campaign_id
+        description: "The unique identifier for the campaign."
+      - name: product_id
+        description: "The unique identifier for the product."
+      - name: date
+        description: "The date for the data aggregation."
+      - name: ad_impressions
+        description: "The total number of ad impressions."
+      - name: total_amount
+        description: "The total amount spent on ads."
+      - name: ad_clicks
+        description: "The total number of ad clicks."
+      - name: ad_ctr
+        description: "The average click-through rate for ads."
+      - name: organic_impressions
+        description: "The total number of organic impressions."
+      - name: organic_clicks
+        description: "The total number of organic clicks."
+      - name: organic_ctr
+        description: "The average click-through rate for organic searches."
+
+  - name: view_daily_google_ads_campaigns
+    description: "A daily aggregation of Google Ads campaign data, including impressions, clicks, CTR, and CPC, with day of the week analysis."
+    columns:
+      - name: campaign_product_id
+        description: "A unique identifier for each campaign-product combination."
+      - name: campaign_id
+        description: "The unique identifier for the campaign."
+      - name: product_id
+        description: "The unique identifier for the product."
+      - name: date
+        description: "The date for the data aggregation."
+      - name: impressions
+        description: "The number of impressions."
+      - name: clicks
+        description: "The number of clicks."
+      - name: ctr
+        description: "The click-through rate."
+      - name: cpc
+        description: "The cost per click."
+      - name: total_amount
+        description: "The total amount spent."
+
+  - name: view_daily_organic_search
+    description: "A daily aggregation of organic search metrics by product, including impressions, clicks, and average position, with day of the week analysis."
+    columns:
+      - name: product_id
+        description: "The unique identifier for the product."
+      - name: date
+        description: "The date of the data aggregation."
+      - name: impressions
+        description: "The number of organic search impressions."
+      - name: clicks
+        description: "The number of organic search clicks."
+      - name: ctr
+        description: "The click-through rate for organic search."
+      - name: average_position
+        description: "The average position in search results."
+
+  - name: view_google_ads_campaigns
+    description: "A comprehensive view of Google Ads campaigns over their entire lifetime, aggregating metrics like impressions, clicks, and spending."
+    columns:
+      - name: id
+        description: "A unique identifier for each campaign-product combination."
+      - name: campaign_id
+        description: "The unique identifier for the campaign."
+      - name: product_id
+        description: "The unique identifier for the product."
+      - name: start_date
+        description: "The start date of the campaign."
+      - name: end_date
+        description: "The end date of the campaign."
+      - name: total_impressions
+        description: "The total number of impressions over the campaign's lifetime."
+      - name: total_clicks
+        description: "The total number of clicks over the campaign's lifetime."
+      - name: avg_ctr
+        description: "The average click-through rate over the campaign's lifetime."
+      - name: avg_cpc
+        description: "The average cost per click over the campaign's lifetime."
+      - name: total_amount
+        description: "The total amount spent over the campaign's lifetime."

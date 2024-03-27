@@ -3,7 +3,7 @@
 WITH base AS (
   SELECT
     osp.product_id,
-    osp.date,
+    dd.date,
     osp.impressions,
     osp.clicks,
     osp.ctr,
@@ -28,6 +28,16 @@ WITH base AS (
 )
 
 SELECT
-  b.*
+    b.product_id,
+    b.date,
+    b.impressions,
+    b.clicks,
+    b.ctr,
+    b.average_position,
+    b.day_of_week,
+    b.previous_day_clicks,
+    b.previous_day_impressions,
+    b.day_to_day_click_difference,
+    b.day_to_day_impression_difference
 FROM base b
 ORDER BY b.product_id, b.date

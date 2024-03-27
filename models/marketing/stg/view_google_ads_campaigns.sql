@@ -1,7 +1,8 @@
 
 {{ config(materialized='view') }} 
 
-SELECT 
+SELECT
+    id, 
     campaign_id,
     product_id,
     MIN(date) AS start_date, 
@@ -10,8 +11,8 @@ SELECT
     SUM(clicks) AS total_clicks,
     AVG(ctr) AS avg_ctr,
     AVG(cpc) AS avg_cpc,
-    SUM(total_spend) AS total_spend
+    SUM(total_amount) AS total_amount
 FROM
     {{ref('raw_google_ads_campaigns')}}
-GROUP BY 1,2
+GROUP BY 1,2,3
 
